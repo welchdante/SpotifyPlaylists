@@ -22,18 +22,6 @@ public class SpotifySongsCollector {
             .setClientSecret(clientSecret)
             .build();
 
-    public static void main(String[] args) {
-        double roadTripDuration = 4000;
-        double playlistDuration = 0;
-        authenticateCredentials(spotifyApi);
-        Set<AlbumSimplified> songs = getAllSongs();
-        Set<AlbumSimplified> playlist = buildPlaylist(songs, playlistDuration, roadTripDuration);
-        System.out.println("Your playlist is:");
-        for (AlbumSimplified p : playlist) {
-            System.out.println(p.getName());
-        }
-    }
-
     public static void authenticateCredentials(SpotifyApi spotifyApi) {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
                 .build();

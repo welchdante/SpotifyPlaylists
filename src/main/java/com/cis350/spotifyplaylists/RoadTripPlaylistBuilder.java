@@ -1,6 +1,5 @@
 package com.cis350.spotifyplaylists;
 
-import com.wrapper.spotify.exceptions.detailed.BadRequestException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import org.json.JSONObject;
 
