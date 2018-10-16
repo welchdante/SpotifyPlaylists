@@ -17,7 +17,7 @@ public class SpotifySongsCollector {
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
 
-    private static SpotifyApi spotifyApi = new SpotifyApi.Builder()
+    public static SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .build();
