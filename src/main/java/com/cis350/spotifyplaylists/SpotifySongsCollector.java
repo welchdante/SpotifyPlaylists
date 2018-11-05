@@ -17,7 +17,7 @@ public class SpotifySongsCollector {
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
 
-    public static SpotifyApi spotifyApi = new SpotifyApi.Builder()
+    public SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .build();
@@ -37,7 +37,7 @@ public class SpotifySongsCollector {
 
     }
 
-    public static Set<AlbumSimplified> getAllSongs() {
+    public Set<AlbumSimplified> getAllSongs() {
         Set<AlbumSimplified> songs = new HashSet<>();
         GetListOfNewReleasesRequest getListOfNewReleasesRequest = spotifyApi.getListOfNewReleases()
                 .country(CountryCode.US)

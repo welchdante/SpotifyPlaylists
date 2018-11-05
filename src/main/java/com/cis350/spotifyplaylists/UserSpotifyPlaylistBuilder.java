@@ -4,8 +4,11 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.model_objects.specification.Paging;
+import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
+import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
 
 import java.util.Scanner;
 import java.io.IOException;
@@ -16,6 +19,7 @@ public class UserSpotifyPlaylistBuilder {
 
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
+
     private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000/redirect");
     private static final String code = "";
 
@@ -24,15 +28,22 @@ public class UserSpotifyPlaylistBuilder {
             .setClientSecret(clientSecret)
             .setRedirectUri(redirectUri)
             .build();
+//
+//    private final AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code)
+//            .build();
 
-    private static final AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code)
-            .build();
+
+//    private static final GetListOfCurrentUsersPlaylistsRequest getListOfCurrentUsersPlaylistsRequest = spotifyApi
+//            .getListOfCurrentUsersPlaylists()
+//            .limit(10)
+//            .offset(0)
+//            .build();
 
 
     public static void main(String[] args) throws URISyntaxException {
 
         AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-                .scope("user-read-birthdate,user-read-email")
+                .scope("user-read-birthdate, user-read-email")
                 .show_dialog(true)
                 .build();
 
@@ -46,6 +57,8 @@ public class UserSpotifyPlaylistBuilder {
         userInput.close();
         System.out.println(code);
 
+
+        // authorizes the user
         AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code)
                 .build();
 
@@ -61,19 +74,20 @@ public class UserSpotifyPlaylistBuilder {
             System.out.println("Error: " + e.getMessage());
         }
 
-    }
+        // get list of current user's playlists
+        GetListOfCurrentUsersPlaylistsRequest getListOfCurrentUsersPlaylistsRequest = spotifyApi
+                .getListOfCurrentUsersPlaylists()
+                .limit(10)
+                .offset(0)
+                .build();
 
-//    public String getAuthorizationURL() {
-//        System.out.println("Getting Authorize URL");
-//        Api api = getApiBuilder().build();
-//
-//        // Set the necessary scopes that the application will need from the user
-//        String scopes = env.getProperty("spotify.oauth.scope");
-//        List<String> scopeList = Arrays.asList(scopes.split(","));
-//
-//        // Set a state. This is used to prevent cross site request forgeries.
-//        String state = env.getProperty("spotify.oauth.state");
-//
-//        return api.createAuthorizeURL(scopeList, state);
-//    }
+        try {
+            final Paging<PlaylistSimplified> playlistSimplifiedPaging = getListOfCurrentUsersPlaylistsRequest.execute();
+
+            System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
+        } catch (IOException | SpotifyWebApiException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
 }

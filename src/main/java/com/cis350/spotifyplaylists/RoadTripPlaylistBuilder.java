@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
 
-import static com.cis350.spotifyplaylists.SpotifySongsCollector.getAllSongs;
 
 public class RoadTripPlaylistBuilder {
 
@@ -17,9 +16,9 @@ public class RoadTripPlaylistBuilder {
         //build URL for the request
         TomTomCollector tomTomCollector = new TomTomCollector();
         String url = tomTomCollector.buildRequestUrl((String)coordinates.get("startingLatitude"),
-                                                     (String)coordinates.get("startingLongitude"),
-                                                     (String)coordinates.get("endingLatitude"),
-                                                     (String)coordinates.get("endingLongitude"));
+                (String)coordinates.get("startingLongitude"),
+                (String)coordinates.get("endingLatitude"),
+                (String)coordinates.get("endingLongitude"));
 
         //make request object and make request
         EasyHTTPRequest easyHTTPRequest = new EasyHTTPRequest();
@@ -38,11 +37,12 @@ public class RoadTripPlaylistBuilder {
         //build the playlist
         SpotifySongsCollector songCollector = new SpotifySongsCollector();
         songCollector.authenticateCredentials(songCollector.spotifyApi);
-        Set<AlbumSimplified> songs = getAllSongs();
+        Set<AlbumSimplified> songs = songCollector.getAllSongs();
         Set<AlbumSimplified> playlist = songCollector.buildPlaylist(songs, 0, travelTimeInSeconds);
         System.out.println("Your playlist is:");
         for (AlbumSimplified p : playlist) {
             System.out.println(p.getName());
+
         }
 
     }
