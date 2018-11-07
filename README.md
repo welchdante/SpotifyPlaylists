@@ -17,6 +17,7 @@
   * [] Integrate it with the backend 
   
 * [] Other
+    * [] Javadocs
     * [] Bug catcher
     * [] Code coverage 
     * [] Other stuff I can't think of right now
