@@ -61,7 +61,8 @@ public class RoadTripPlaylistBuilder {
         System.out.println("Let's add that playlist to your user account!");
         String playlistName = PromptHelpers.prompUserForPlaylistName();
         String displayName = userSpotifyPlaylistBuilder.getUsername();
-        userSpotifyPlaylistBuilder.createPlaylist(displayName, playlistName);
+//        String playlistId = userSpotifyPlaylistBuilder.createPlaylist(displayName, playlistName);
+
 
     }
 

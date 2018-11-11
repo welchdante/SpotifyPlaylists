@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.Playlist;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
@@ -13,6 +14,8 @@ import com.wrapper.spotify.requests.authorization.authorization_code.Authorizati
 import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
 import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
+import com.wrapper.spotify.requests.data.playlists.AddTracksToPlaylistRequest;
+
 
 import java.util.Scanner;
 import java.io.IOException;
@@ -32,7 +35,22 @@ public class UserSpotifyPlaylistBuilder {
             .setRedirectUri(redirectUri)
             .build();
 
-    public static void createPlaylist(String userId, String playlistName) {
+//    public static void addSongsToPlaylist(String playlistId) {
+//        AddTracksToPlaylistRequest addTracksToPlaylistRequest = spotifyApi
+//                .addTracksToPlaylist(playlistId, uris)
+//                .position(0)
+//                .build();
+//        try {
+//            final SnapshotResult snapshotResult = addTracksToPlaylistRequest.execute();
+//
+//            System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
+//        } catch (IOException | SpotifyWebApiException e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//    }
+
+    public static String createPlaylist(String userId, String playlistName) {
+        String playlistId = "";
         CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, playlistName)
                 .collaborative(false)
                 .public_(false)
@@ -40,11 +58,12 @@ public class UserSpotifyPlaylistBuilder {
                 .build();
         try {
             final Playlist playlist = createPlaylistRequest.execute();
-
             System.out.println("Name: " + playlist.getName());
+            playlistId = playlist.getId();
         } catch (IOException | SpotifyWebApiException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return playlistId;
     }
 
     public static String getUsername() {
