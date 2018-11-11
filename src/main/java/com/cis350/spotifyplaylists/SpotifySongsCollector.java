@@ -2,6 +2,7 @@ package com.cis350.spotifyplaylists;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
+import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
@@ -10,12 +11,15 @@ import com.wrapper.spotify.requests.authorization.client_credentials.ClientCrede
 import com.wrapper.spotify.requests.data.browse.GetListOfNewReleasesRequest;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SpotifySongsCollector {
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
+    private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000/redirect");
+
 
     public SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
