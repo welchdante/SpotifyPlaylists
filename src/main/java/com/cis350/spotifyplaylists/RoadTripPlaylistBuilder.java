@@ -1,14 +1,9 @@
 package com.cis350.spotifyplaylists;
 
 import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
-import com.wrapper.spotify.model_objects.specification.User;
-import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
-import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -58,10 +53,14 @@ public class RoadTripPlaylistBuilder {
             System.out.println(p.getName());
         }
 
+
         System.out.println("Let's add that playlist to your user account!");
         String playlistName = PromptHelpers.prompUserForPlaylistName();
         String displayName = userSpotifyPlaylistBuilder.getUsername();
-//        String playlistId = userSpotifyPlaylistBuilder.createPlaylist(displayName, playlistName);
+        String playlistId = userSpotifyPlaylistBuilder.createPlaylist(displayName, playlistName);
+        userSpotifyPlaylistBuilder.addSongsToPlaylist(playlist, playlistId);
+
+
 
 
     }

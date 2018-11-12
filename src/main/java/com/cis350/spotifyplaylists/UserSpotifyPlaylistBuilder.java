@@ -1,26 +1,21 @@
 package com.cis350.spotifyplaylists;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import com.wrapper.spotify.model_objects.special.SnapshotResult;
-import com.wrapper.spotify.model_objects.specification.Paging;
-import com.wrapper.spotify.model_objects.specification.Playlist;
-import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
-import com.wrapper.spotify.model_objects.specification.User;
+import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
-import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
+import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
-import com.wrapper.spotify.requests.data.playlists.AddTracksToPlaylistRequest;
-
 
 import java.util.Scanner;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.Set;
 
 public class UserSpotifyPlaylistBuilder {
 
@@ -48,6 +43,31 @@ public class UserSpotifyPlaylistBuilder {
 //            System.out.println("Error: " + e.getMessage());
 //        }
 //    }
+
+    public static void addSongsToPlaylist(Set<AlbumSimplified> playlist, String playlistId) {
+//        getSong("01iyCAUm8EvOFqVWYJ3dVX");
+        for (AlbumSimplified track : playlist) {
+//            System.out.println(track.getName());
+            getSong(track.getId());
+        }
+
+
+    }
+
+    private static void getSong(String songId) {
+        System.out.println(songId);
+        GetTrackRequest getTrackRequest = spotifyApi.getTrack(songId)
+                .market(CountryCode.US)
+                .build();
+        try {
+            final Track track = getTrackRequest.execute();
+
+            System.out.println("Name: " + track.getName());
+        } catch (IOException | SpotifyWebApiException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
 
     public static String createPlaylist(String userId, String playlistName) {
         String playlistId = "";
