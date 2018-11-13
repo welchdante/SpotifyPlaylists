@@ -58,11 +58,7 @@ public class RoadTripPlaylistBuilder {
         String playlistName = PromptHelpers.prompUserForPlaylistName();
         String displayName = userSpotifyPlaylistBuilder.getUsername();
         String playlistId = userSpotifyPlaylistBuilder.createPlaylist(displayName, playlistName);
-        userSpotifyPlaylistBuilder.addSongsToPlaylist(playlist, playlistId);
-
-
-
-
+        userSpotifyPlaylistBuilder.addSongsToPlaylist(displayName, playlistId, playlist);
     }
 
 }

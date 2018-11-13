@@ -5,13 +5,17 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.model_objects.special.SnapshotResult;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
+import com.wrapper.spotify.requests.data.playlists.AddTracksToPlaylistRequest;
 import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
+import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 import java.net.URI;
@@ -30,28 +34,52 @@ public class UserSpotifyPlaylistBuilder {
             .setRedirectUri(redirectUri)
             .build();
 
-//    public static void addSongsToPlaylist(String playlistId) {
-//        AddTracksToPlaylistRequest addTracksToPlaylistRequest = spotifyApi
-//                .addTracksToPlaylist(playlistId, uris)
-//                .position(0)
-//                .build();
-//        try {
-//            final SnapshotResult snapshotResult = addTracksToPlaylistRequest.execute();
-//
-//            System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
-//        } catch (IOException | SpotifyWebApiException e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
-//    }
+    public static void addSongsToPlaylist(String userId, String playlistId, Set<AlbumSimplified> playlist) {
+        ArrayList<String> songIds = getSongIds(playlist);
+        String[] uris = buildUris(songIds);
 
-    public static void addSongsToPlaylist(Set<AlbumSimplified> playlist, String playlistId) {
-//        getSong("01iyCAUm8EvOFqVWYJ3dVX");
-        for (AlbumSimplified track : playlist) {
-//            System.out.println(track.getName());
-            getSong(track.getId());
+        AddTracksToPlaylistRequest addTracksToPlaylistRequest = spotifyApi
+                .addTracksToPlaylist(userId, playlistId, uris)
+                .position(0)
+                .build();
+
+        try {
+            final SnapshotResult snapshotResult = addTracksToPlaylistRequest.execute();
+
+            System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
+        } catch (IOException | SpotifyWebApiException e) {
+            System.out.println("Error: " + e.getMessage());
         }
+    }
 
+    private static ArrayList<String> getSongIds(Set<AlbumSimplified> playlist) {
+        ArrayList<String> songIds = new ArrayList<String>();
+        for (AlbumSimplified track : playlist) {
+            String trackName = track.getName();
+            SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(trackName)
+                    .market(CountryCode.US)
+                    .limit(10)
+                    .offset(0)
+                    .build();
+            try {
+                final Paging<Track> trackPaging = searchTracksRequest.execute();
+                String trackId = trackPaging.getItems()[0].getId();
+                songIds.add(trackId);
+            } catch (IOException | SpotifyWebApiException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        return songIds;
+    }
 
+    private static String[] buildUris(ArrayList<String> songIds) {
+        ArrayList<String> uris = new ArrayList<String>();
+        String currentId;
+        for (String id : songIds) {
+            currentId = "spotify:track:" + id;
+            uris.add(currentId);
+        }
+        return uris.stream().toArray(String[]::new);
     }
 
     private static void getSong(String songId) {
