@@ -7,7 +7,6 @@ public class TomTomCollector {
 
     String baseUrl = "https://api.tomtom.com/routing/1/calculateRoute/";
     String key = "4yIZHrtDC65WvrfagUUmXAQQiDVAqqre";
-//    String url = "https://api.tomtom.com/routing/1/calculateRoute/45.50931,20.42936:42.50274,20.43872/json?routeType=fastest&avoid=tollRoads&key=4yIZHrtDC65WvrfagUUmXAQQiDVAqqre";
 
     public int getTripDistance(JSONObject jsonObject) {
         JSONArray routes = (JSONArray)jsonObject.get("routes");
