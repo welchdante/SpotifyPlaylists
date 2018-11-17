@@ -29,8 +29,8 @@
   
 * [ ] Other
     * [x] Javadocs
-	    	* Completed by Dante on November 17.
-		* Just need to generate them at the end. 
+	    * Completed by Dante on November 17.
+	    * Just need to generate them at the end. 
     * [ ] Bug catcher
     * [ ] Code coverage 
     		* Figured out by Dante on November 17
