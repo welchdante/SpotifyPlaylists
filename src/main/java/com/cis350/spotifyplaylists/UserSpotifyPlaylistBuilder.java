@@ -26,17 +26,26 @@ import java.util.Set;
  */
 public class UserSpotifyPlaylistBuilder {
 
+    /** Client ID for the Spotify API, which is given by the project dashboard */
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
+    /** Client Secret for the Spotify API, which is given by the project dashboard */
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
+    /** Redirect URI used for authenticating the user account */
     private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000/redirect");
+    /** Stores the code given by the redirect URI for authenticating the user account */
     private static final String code = "";
-
+    /** Object used for interacting with the Spotify API */
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .setRedirectUri(redirectUri)
             .build();
 
+    /** Adds a list of song objects to a playlist object
+     * @param userId ID for the user's Spotify account.
+     * @param playlistId ID for the playlist to add songs to.
+     * @param playlist Songs to be added to the playlist.
+     * */
     public static void addSongsToPlaylist(String userId, String playlistId, Set<AlbumSimplified> playlist) {
         ArrayList<String> songIds = getSongIds(playlist);
         String[] uris = buildUris(songIds);
@@ -54,6 +63,10 @@ public class UserSpotifyPlaylistBuilder {
         }
     }
 
+    /** Get track IDs for each AlbumSimplified object in the playlist
+     * @param playlist Set of AlbumSimplified objects that will be added to the playlist.
+     * @return Array list of strings of song IDs.
+     * */
     private static ArrayList<String> getSongIds(Set<AlbumSimplified> playlist) {
         ArrayList<String> songIds = new ArrayList<String>();
         for (AlbumSimplified track : playlist) {
@@ -74,6 +87,10 @@ public class UserSpotifyPlaylistBuilder {
         return songIds;
     }
 
+    /** Build the URIs for each of the song IDs that are needed for adding them to a playlist.
+     * @param songIds Array list of strings of song IDs.
+     * @return Array of strings containing the URI of the song in the Spotify API.
+     * */
     private static String[] buildUris(ArrayList<String> songIds) {
         ArrayList<String> uris = new ArrayList<String>();
         String currentId;
@@ -84,6 +101,11 @@ public class UserSpotifyPlaylistBuilder {
         return uris.stream().toArray(String[]::new);
     }
 
+    /** Creates the playlist.
+     * @param userId User ID for the user's Spotify account.
+     * @param playlistName Name of the playlist to be created.
+     * @return String that is the ID for the playlist.
+     * */
     public static String createPlaylist(String userId, String playlistName) {
         String playlistId = "";
         CreatePlaylistRequest createPlaylistRequest = spotifyApi.createPlaylist(userId, playlistName)
@@ -101,6 +123,9 @@ public class UserSpotifyPlaylistBuilder {
         return playlistId;
     }
 
+    /** Get the username for the Spotify account.
+     * @return String that is the username for a user's Spotify account.
+     * */
     public static String getUsername() {
         GetCurrentUsersProfileRequest getCurrentUsersProfileRequest = spotifyApi.getCurrentUsersProfile()
                 .build();
@@ -114,6 +139,9 @@ public class UserSpotifyPlaylistBuilder {
         return displayName;
     }
 
+    /** Get authentication URI and set permissions for the Spotify account.
+     * @return String that is the authentication URI for the user's Spotify account.
+     * */
     public static String getAuthenticationURI() {
         AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
                 .scope("user-read-birthdate, user-read-email, playlist-modify-private")
@@ -124,12 +152,19 @@ public class UserSpotifyPlaylistBuilder {
         return authenticateURI.toString();
     }
 
+    /** Get authentication code for Spotify account from user input.
+     * @return String that is the authentication code for the user account.
+     * */
     public static String getUserAuthenticationCode() {
         Scanner userInput = new Scanner(System.in);
         String authenticationCode = userInput.nextLine();
         return authenticationCode;
     }
 
+    /** Authenticate a Spotify account using the authentication code.
+     * @param code Code used to authenticate the user account.
+     * @return Spotify API object used to interact with the user account.
+     * */
     public static SpotifyApi authenticateAccount(String code) {
         AuthorizationCodeRequest authorizationCodeRequest = spotifyApi.authorizationCode(code)
                 .build();
