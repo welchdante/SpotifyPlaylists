@@ -8,10 +8,11 @@ import java.util.HashMap;
 import java.util.Set;
 
 
-public class RoadTripPlaylistBuilder {
+
+public class RoadTripPlaylistBuilder extends PromptHelpers {
 
     public static void main(String[] args) {
-        PromptHelpers.greeting();
+        greeting();
 
         //create new object
         UserSpotifyPlaylistBuilder userSpotifyPlaylistBuilder = new UserSpotifyPlaylistBuilder();
@@ -21,7 +22,7 @@ public class RoadTripPlaylistBuilder {
         SpotifyApi spotifyApi = userSpotifyPlaylistBuilder.authenticateAccount(code);
 
 
-        HashMap coordinates = PromptHelpers.promptUserForCoordinates();
+        HashMap coordinates = promptUserForCoordinates();
 
         //build URL for the request
         TomTomCollector tomTomCollector = new TomTomCollector();
@@ -55,7 +56,7 @@ public class RoadTripPlaylistBuilder {
 
 
         System.out.println("Let's add that playlist to your user account!");
-        String playlistName = PromptHelpers.prompUserForPlaylistName();
+        String playlistName = prompUserForPlaylistName();
         String displayName = userSpotifyPlaylistBuilder.getUsername();
         String playlistId = userSpotifyPlaylistBuilder.createPlaylist(displayName, playlistName);
         userSpotifyPlaylistBuilder.addSongsToPlaylist(displayName, playlistId, playlist);

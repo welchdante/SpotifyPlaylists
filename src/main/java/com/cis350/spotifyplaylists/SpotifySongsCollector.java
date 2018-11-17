@@ -30,7 +30,6 @@ public class SpotifySongsCollector {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
                 .build();
 
-        //authenticate credentials
         try {
             final ClientCredentials clientCredentials = clientCredentialsRequest.execute();
             spotifyApi.setAccessToken(clientCredentials.getAccessToken());

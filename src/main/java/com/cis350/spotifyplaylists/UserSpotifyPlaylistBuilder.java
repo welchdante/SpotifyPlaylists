@@ -12,7 +12,6 @@ import com.wrapper.spotify.requests.authorization.authorization_code.Authorizati
 import com.wrapper.spotify.requests.data.playlists.AddTracksToPlaylistRequest;
 import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
-import com.wrapper.spotify.requests.data.tracks.GetTrackRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 
 import java.util.ArrayList;
@@ -45,7 +44,6 @@ public class UserSpotifyPlaylistBuilder {
 
         try {
             final SnapshotResult snapshotResult = addTracksToPlaylistRequest.execute();
-
             System.out.println("Snapshot ID: " + snapshotResult.getSnapshotId());
         } catch (IOException | SpotifyWebApiException e) {
             System.out.println("Error: " + e.getMessage());
@@ -81,21 +79,21 @@ public class UserSpotifyPlaylistBuilder {
         }
         return uris.stream().toArray(String[]::new);
     }
-
-    private static void getSong(String songId) {
-        System.out.println(songId);
-        GetTrackRequest getTrackRequest = spotifyApi.getTrack(songId)
-                .market(CountryCode.US)
-                .build();
-        try {
-            final Track track = getTrackRequest.execute();
-
-            System.out.println("Name: " + track.getName());
-        } catch (IOException | SpotifyWebApiException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-    }
+//
+//    private static void getSong(String songId) {
+//        System.out.println(songId);
+//        GetTrackRequest getTrackRequest = spotifyApi.getTrack(songId)
+//                .market(CountryCode.US)
+//                .build();
+//        try {
+//            final Track track = getTrackRequest.execute();
+//
+//            System.out.println("Name: " + track.getName());
+//        } catch (IOException | SpotifyWebApiException e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//
+//    }
 
     public static String createPlaylist(String userId, String playlistName) {
         String playlistId = "";
