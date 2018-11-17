@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="42150a49-359a-4d9d-b959-d8c2d56701d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/SpotifySongsCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/SpotifySongsCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/TomTomCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/TomTomCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,14 +46,14 @@
         <counts>
           <entry key="class" value="7" />
           <entry key="dummy" value="27" />
-          <entry key="java" value="11410" />
+          <entry key="java" value="11775" />
           <entry key="xml" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="7" />
-          <entry key="JAVA" value="11410" />
+          <entry key="JAVA" value="11775" />
           <entry key="PLAIN_TEXT" value="27" />
           <entry key="XML" value="27" />
         </counts>
@@ -109,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+            <state relative-caret-position="799">
+              <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,9 +184,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/EasyHTTPRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/TomTomCollector.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/SpotifySongsCollector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java" />
       </list>
     </option>
   </component>
@@ -275,7 +271,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542476102443" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542478292574" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -388,12 +384,12 @@
       <workItem from="1541448685113" duration="7762000" />
       <workItem from="1541599120733" duration="1295000" />
       <workItem from="1541972172563" duration="12297000" />
-      <workItem from="1542469904254" duration="2246000" />
+      <workItem from="1542469904254" duration="2504000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23600000" />
+    <option name="totallyTimeSpent" value="23858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1957" height="1417" extended-state="0" />
@@ -576,16 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
@@ -598,8 +584,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/PromptHelpers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
