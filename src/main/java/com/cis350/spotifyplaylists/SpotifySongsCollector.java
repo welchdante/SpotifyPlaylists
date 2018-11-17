@@ -15,6 +15,10 @@ import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
+/** Collects songs from the public Spotify API.
+ * @author Dante Welch
+ * @version 1.0
+ */
 public class SpotifySongsCollector {
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
@@ -30,7 +34,6 @@ public class SpotifySongsCollector {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
                 .build();
 
-        //authenticate credentials
         try {
             final ClientCredentials clientCredentials = clientCredentialsRequest.execute();
             spotifyApi.setAccessToken(clientCredentials.getAccessToken());
