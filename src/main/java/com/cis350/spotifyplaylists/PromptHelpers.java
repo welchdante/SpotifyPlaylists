@@ -22,25 +22,62 @@ public class PromptHelpers {
      * @return Hash map of the starting and ending latitute and longitude of the road trip.
      * */
     public static HashMap promptUserForCoordinates() {
-        HashMap coordinates = new HashMap();
         Scanner userInput = new Scanner(System.in);
+        HashMap coordinates = new HashMap();
 
+        coordinates = getStartingLatitude(userInput, coordinates);
+        coordinates = getStartingLongitude(userInput, coordinates);
+        coordinates = getEndingLatitude(userInput, coordinates);
+        coordinates = getEndingLongitude(userInput, coordinates);
+
+        return coordinates;
+    }
+
+    /**
+     * @param userInput Scanner object for user input.
+     * @param coordinates Stores coordinates.
+     * @return Current coordinates given by user.
+     */
+    public static HashMap getStartingLatitude(Scanner userInput, HashMap coordinates) {
         System.out.println("What is the starting latitude of your trip)?");
         String startingLatitude = userInput.next();
         coordinates.put("startingLatitude", startingLatitude);
+        return coordinates;
+    }
 
+    /**
+     * @param userInput Scanner object for user input.
+     * @param coordinates Stores coordinates.
+     * @return Current coordinates given by user.
+     */
+    public static HashMap getStartingLongitude(Scanner userInput, HashMap coordinates) {
         System.out.println("What is the starting longitude of your trip?");
         String startingLongitude = userInput.next();
         coordinates.put("startingLongitude", startingLongitude);
+        return coordinates;
+    }
 
+    /**
+     * @param userInput Scanner object for user input.
+     * @param coordinates Stores coordinates.
+     * @return Current coordinates given by user.
+     */
+    public static HashMap getEndingLatitude(Scanner userInput, HashMap coordinates) {
         System.out.println("What is the ending latitude of your trip?");
         String endingLatitude = userInput.next();
         coordinates.put("endingLatitude", endingLatitude);
+        return coordinates;
+    }
 
+    /**
+     * @param userInput Scanner object for user input.
+     * @param coordinates Stores coordinates.
+     * @return Current coordinates given by user.
+     */
+    public static HashMap getEndingLongitude(Scanner userInput, HashMap coordinates) {
         System.out.println("What is the ending longitude of your trip?");
         String endingLongitude = userInput.next();
         coordinates.put("endingLongitude", endingLongitude);
-
         return coordinates;
     }
 

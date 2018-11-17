@@ -2,7 +2,6 @@ package com.cis350.spotifyplaylists;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
-import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
@@ -11,25 +10,28 @@ import com.wrapper.spotify.requests.authorization.client_credentials.ClientCrede
 import com.wrapper.spotify.requests.data.browse.GetListOfNewReleasesRequest;
 
 import java.io.IOException;
-import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 
-/** Collects songs from the public Spotify API.
+/** Collects songs from the public Spotify API and does not use user credentials.
  * @author Dante Welch
  * @version 1.0
  */
 public class SpotifySongsCollector {
+    /** Spotify API client ID */
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
+    /** Spotify API client secret key */
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
-    private static final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000/redirect");
-
-
+    /** Spotify API object */
     public SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .build();
 
+
+    /** Authenticates credentials to access the Spotify API
+     * @param spotifyApi Spotify API object used to interact with the Spotify API
+     */
     public static void authenticateCredentials(SpotifyApi spotifyApi) {
         ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
                 .build();
@@ -44,6 +46,9 @@ public class SpotifySongsCollector {
 
     }
 
+    /** Gets all songs that could possibly be added to the playlist.
+     * @return Songs that will be added to the playlist.
+     */
     public Set<AlbumSimplified> getAllSongs() {
         Set<AlbumSimplified> songs = new HashSet<>();
         GetListOfNewReleasesRequest getListOfNewReleasesRequest = spotifyApi.getListOfNewReleases()
@@ -66,6 +71,12 @@ public class SpotifySongsCollector {
         return songs;
     }
 
+    /** Builds the set that contains the songs that will be added to the playlist.
+     * @param songs Songs that will be added to the playlist.
+     * @param playlistDuration Length of the playlist.
+     * @param roadTripDuration Length of the roadtrip.
+     * @return
+     */
     public static Set<AlbumSimplified> buildPlaylist(Set<AlbumSimplified> songs, double playlistDuration, double roadTripDuration) {
         Set<AlbumSimplified> playlist = new HashSet<>();
 
