@@ -83,21 +83,6 @@ public class UserSpotifyPlaylistBuilder {
         }
         return uris.stream().toArray(String[]::new);
     }
-//
-//    private static void getSong(String songId) {
-//        System.out.println(songId);
-//        GetTrackRequest getTrackRequest = spotifyApi.getTrack(songId)
-//                .market(CountryCode.US)
-//                .build();
-//        try {
-//            final Track track = getTrackRequest.execute();
-//
-//            System.out.println("Name: " + track.getName());
-//        } catch (IOException | SpotifyWebApiException e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
-//
-//    }
 
     public static String createPlaylist(String userId, String playlistName) {
         String playlistId = "";
