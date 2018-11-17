@@ -20,6 +20,7 @@
   * [x] Figure out expected outputs to give to front end 
   	* Completed by Dante on November 17
 	* Should be good to go now that Javadocs are done. See RoadTripPlaylistBuilder for the general flow of how the GUI should flow. 
+  * [ ] Fix the 6 million bugs that exist
 
 * [ ] Frontend
 	* [ ] Choose a technology that will be used (Swing or JavaFX)
