@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Set;
 
+/** Authenticates with a Spotify user account and builds a playlist.
+ * @author Dante Welch
+ * @version 1.0
+ */
 public class UserSpotifyPlaylistBuilder {
 
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";

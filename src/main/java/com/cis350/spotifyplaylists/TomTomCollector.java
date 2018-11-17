@@ -3,6 +3,10 @@ package com.cis350.spotifyplaylists;
         import org.json.JSONArray;
         import org.json.JSONObject;
 
+/** Collects data from the TomTom Maps API
+ * @author Dante Welch
+ * @version 1.0
+ */
 public class TomTomCollector {
 
     /** The base URL to send to the TomTom API */

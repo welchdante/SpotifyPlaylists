@@ -3,6 +3,10 @@ package com.cis350.spotifyplaylists;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/** User prompts to be used to gather data from the user.
+ * @author Dante Welch
+ * @version 1.0
+ */
 public class PromptHelpers {
 
     public static void greeting() {

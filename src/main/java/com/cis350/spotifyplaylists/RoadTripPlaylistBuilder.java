@@ -7,8 +7,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Set;
 
-
-
+/** Driver for the playlist builder.
+ * @author Dante Welch
+ * @version 1.0
+ */
 public class RoadTripPlaylistBuilder extends PromptHelpers {
 
     public static void main(String[] args) {
