@@ -46,7 +46,7 @@ public class SpotifySongsCollector {
 
     }
 
-    /** Gets all songs that could possibly be added to the playlist. 
+    /** Gets all songs that could possibly be added to the playlist.
      * @return Songs that will be added to the playlist.
      */
     public Set<AlbumSimplified> getAllSongs() {
