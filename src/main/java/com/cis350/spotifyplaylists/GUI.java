@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URI;
 import java.util.Set;
 import javax.swing.*;
@@ -26,7 +27,6 @@ public class GUI implements ActionListener {
 
     /*declare and instantiate JFrame*/
     private JFrame top = new JFrame("Spotify Roadtrip Playlist Generator");
-    ;
 
     /*declare and instantiate JPanel*/
     private JPanel panel1 = new JPanel();
@@ -41,15 +41,13 @@ public class GUI implements ActionListener {
     private JButton makeList = new JButton("Make Playlist");
 
     /*declare and instantiate labels*/
-    //CHANGE LATER welcome
-    private JLabel welcomeMes = new JLabel("Welcome or logo");
-    private JLabel directions2 = new JLabel("Copy and paste the URL below. "
-            + "Log in to your Spotify account");
+    private JLabel welcomeMes = new JLabel("Welcome");
+    private JLabel directions2 = new JLabel("Click the button to log into Spotify.");
     private JLabel directions3 = new JLabel("Enter the latitude and longitude" +
             "of your starting point and destination.");
     //CHANGE LATER with better info
     private JLabel directions4 = new JLabel("Go to blah to see your playlist.");
-    private JLabel URL = new JLabel();
+    private JButton URL2 = new JButton("URL");
     private JLabel startLat = new JLabel("Starting Latitude");
     private JLabel startLong = new JLabel("Starting Longitude");
     private JLabel destLat = new JLabel("Destination Latitude");
@@ -79,13 +77,14 @@ public class GUI implements ActionListener {
         enterPoints.setPreferredSize(new DimensionUIResource(150, 50));
         makeList.setBackground(Color.white);
         makeList.setPreferredSize(new DimensionUIResource(150, 50));
+        URL2.setBackground(Color.white);
+        URL2.setPreferredSize(new DimensionUIResource(150, 50));
         //labels
         welcomeMes.setForeground(Color.white);
         directions2.setForeground(Color.white);
         directions3.setForeground(Color.white);
         directions4.setForeground(Color.white);
         travelTime.setForeground(Color.white);
-        URL.setForeground(Color.white);
         startLat.setForeground(Color.white);
         startLong.setForeground(Color.white);
         destLat.setForeground(Color.white);
@@ -106,26 +105,7 @@ public class GUI implements ActionListener {
         startList.addActionListener(this);
         enterPoints.addActionListener(this);
         makeList.addActionListener(this);
-
-        /*getting the url for the user*/
-        String clientId = "6ed14ff492bf439a840705e0b54e63d1";
-        String clientSecret = "00245d2afffd436eab7a311317eaffe3";
-        URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
-
-        SpotifyApi spotifyApi = new SpotifyApi.Builder()
-                .setClientId(clientId)
-                .setClientSecret(clientSecret)
-                .setRedirectUri(redirectUri)
-                .build();
-
-        AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-                .state("x4xkmn9pu3j6ukrs8n")
-                .scope("user-read-birthdate,user-read-email")
-                .show_dialog(true)
-                .build();
-
-        URI uri = authorizationCodeUriRequest.execute();
-        URL.setText(uri.toString());
+        URL2.addActionListener(this);
 
         /*adding items for home panel*/
         panel1.add(welcomeMes, BorderLayout.NORTH);
@@ -141,7 +121,7 @@ public class GUI implements ActionListener {
      * window of the GUI. Button goes
      * to next page of getting user info.
      ************************************/
-    public void window1() {
+    private void window1() {
         top.getContentPane().add(panel1);
         top.setSize(1000, 500);
         top.setVisible(true);
@@ -154,7 +134,7 @@ public class GUI implements ActionListener {
      * page of getting user info. Clears
      * previous window.
      ************************************/
-    public void window2() {
+    private void window2() {
 
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
@@ -162,7 +142,7 @@ public class GUI implements ActionListener {
         top.validate();
 
         panel2.add(directions2, BorderLayout.NORTH);
-        panel2.add(URL, BorderLayout.CENTER);
+        panel2.add(URL2, BorderLayout.CENTER);
         panel2.add(enterPoints, BorderLayout.SOUTH);
 
         top.add(panel2);
@@ -179,7 +159,7 @@ public class GUI implements ActionListener {
      * confirmation. Clears previous
      * window.
      ************************************/
-    public void window3() {
+    private void window3() {
 
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
@@ -209,7 +189,7 @@ public class GUI implements ActionListener {
      * confirmation that the playlist
      * has been created in user's account.
      *************************************/
-    public void window4() {
+    private void window4() {
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
         top.getContentPane().repaint();
@@ -235,6 +215,32 @@ public class GUI implements ActionListener {
             window2();
 
         }
+        if (e.getSource() == URL2) {
+            /*getting the url for the user*/
+            String clientId = "6ed14ff492bf439a840705e0b54e63d1";
+            String clientSecret = "00245d2afffd436eab7a311317eaffe3";
+            URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
+
+            SpotifyApi spotifyApi = new SpotifyApi.Builder()
+                    .setClientId(clientId)
+                    .setClientSecret(clientSecret)
+                    .setRedirectUri(redirectUri)
+                    .build();
+
+            AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
+                    .state("x4xkmn9pu3j6ukrs8n")
+                    .scope("user-read-birthdate,user-read-email")
+                    .show_dialog(true)
+                    .build();
+
+            URI uri = authorizationCodeUriRequest.execute();
+            //URL2.setText(uri.toString());
+            try {
+                Desktop.getDesktop().browse(URI.create(uri.toString()));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
         if (e.getSource() == enterPoints) {
 
             /*changes window*/
@@ -258,7 +264,7 @@ public class GUI implements ActionListener {
      * Gives time of trip and finish
      * playlist.
      **********************************/
-    public void builder() {
+    private void builder() {
 
         //build URL for the request
         TomTomCollector tomTomCollector = new TomTomCollector();
@@ -270,7 +276,7 @@ public class GUI implements ActionListener {
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject =  easyHTTPRequest.sendGet(url);
+            jsonObject = easyHTTPRequest.sendGet(url);
             System.out.println(jsonObject);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
