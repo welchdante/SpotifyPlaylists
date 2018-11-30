@@ -60,10 +60,6 @@ public class GUI implements ActionListener {
     private JTextField typeDestinLat = new JTextField();
     private JTextField typeDestinLong = new JTextField();
 
-    /*creates Spotify object*/
-    //CHANGE LATER
-    private RoadTripPlaylistBuilder playlist = new RoadTripPlaylistBuilder();
-
     /********************************
      Constructor that makes main page
      ********************************/
@@ -123,7 +119,7 @@ public class GUI implements ActionListener {
      ************************************/
     private void window1() {
         top.getContentPane().add(panel1);
-        top.setSize(1000, 500);
+        top.setSize(700, 500);
         top.setVisible(true);
         top.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -146,7 +142,7 @@ public class GUI implements ActionListener {
         panel2.add(enterPoints, BorderLayout.SOUTH);
 
         top.add(panel2);
-        top.setSize(1600, 500);
+        top.setSize(700, 500);
         top.setVisible(true);
         top.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -200,7 +196,7 @@ public class GUI implements ActionListener {
         panel4.add(travelTime, BorderLayout.CENTER);
 
         top.add(panel4);
-        top.setSize(1000, 500);
+        top.setSize(700, 500);
         top.setVisible(true);
         top.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
