@@ -43,7 +43,6 @@ public class GUI implements ActionListener {
     private JButton URL2 = new JButton("URL");
 
     /*declare and instantiate labels*/
-    private JLabel welcomeMes = new JLabel("Welcome");
     private JLabel directions2 = new JLabel("Click the button to log into Spotify.");
     private JLabel directions3 = new JLabel("Enter the latitude and longitude" +
             "of your starting point and destination.");
@@ -56,7 +55,6 @@ public class GUI implements ActionListener {
     private JLabel travelTime = new JLabel();
 
     /*declare text field*/
-    private JTextField urlcopy = new JTextField();
     private JTextField typeStartLat = new JTextField();
     private JTextField typeStartLong = new JTextField();
     private JTextField typeDestinLat = new JTextField();
@@ -78,7 +76,6 @@ public class GUI implements ActionListener {
         URL2.setBackground(Color.white);
         URL2.setPreferredSize(new DimensionUIResource(150, 50));
         //labels
-        welcomeMes.setForeground(Color.white);
         directions2.setForeground(Color.white);
         directions3.setForeground(Color.white);
         directions4.setForeground(Color.white);
@@ -106,7 +103,6 @@ public class GUI implements ActionListener {
         URL2.addActionListener(this);
 
         /*adding items for home panel*/
-        panel1.add(welcomeMes, BorderLayout.NORTH);
         panel1.add(startList, BorderLayout.CENTER);
 
         /*finishing*/
@@ -142,8 +138,7 @@ public class GUI implements ActionListener {
         top.validate();
 
         panel2.add(directions2, BorderLayout.NORTH);
-        //panel2.add(URL2, BorderLayout.CENTER);
-        panel2.add(urlcopy, BorderLayout.CENTER);
+        panel2.add(URL2, BorderLayout.CENTER);
         panel2.add(enterPoints, BorderLayout.SOUTH);
 
         top.add(panel2);
@@ -191,6 +186,7 @@ public class GUI implements ActionListener {
      * has been created in user's account.
      *************************************/
     private void window4() {
+
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
         top.getContentPane().repaint();
@@ -212,56 +208,22 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startList) {
 
-            String clientId = "6ed14ff492bf439a840705e0b54e63d1";
-            String clientSecret = "00245d2afffd436eab7a311317eaffe3";
-            URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
-
-            SpotifyApi spotifyApi = new SpotifyApi.Builder()
-                    .setClientId(clientId)
-                    .setClientSecret(clientSecret)
-                    .setRedirectUri(redirectUri)
-                    .build();
-
-            AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-                    .state("x4xkmn9pu3j6ukrs8n")
-                    .scope("user-read-birthdate,user-read-email")
-                    .show_dialog(true)
-                    .build();
-
-            URI uri = authorizationCodeUriRequest.execute();
-            urlcopy.setText(uri.toString());
-
             /*changes window*/
             window2();
 
         }
-//        if (e.getSource() == URL2) {
-//
-//            /*getting the url for the user*/
-//            String clientId = "6ed14ff492bf439a840705e0b54e63d1";
-//            String clientSecret = "00245d2afffd436eab7a311317eaffe3";
-//            URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
-//
-//            SpotifyApi spotifyApi = new SpotifyApi.Builder()
-//                    .setClientId(clientId)
-//                    .setClientSecret(clientSecret)
-//                    .setRedirectUri(redirectUri)
-//                    .build();
-//
-//            AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-//                    .state("x4xkmn9pu3j6ukrs8n")
-//                    .scope("user-read-birthdate,user-read-email")
-//                    .show_dialog(true)
-//                    .build();
-//
-//            URI uri = authorizationCodeUriRequest.execute();
-//            //URL2.setText(uri.toString());
-//            try {
-//                Desktop.getDesktop().browse(URI.create(uri.toString()));
-//            } catch (IOException e1) {
-//                e1.printStackTrace();
-//            }
-//        }
+        if (e.getSource() == URL2) {
+
+            /* Create a playlist builder object */
+            UserSpotifyPlaylistBuilder userSpotifyPlaylistBuilder = new UserSpotifyPlaylistBuilder();
+            /* Create the URI for authenticating the account */
+            String uri = userSpotifyPlaylistBuilder.getAuthenticationURI();
+            try {
+                Desktop.getDesktop().browse(URI.create(uri));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
         if (e.getSource() == enterPoints) {
 
             /*changes window*/
@@ -270,8 +232,16 @@ public class GUI implements ActionListener {
         }
         if (e.getSource() == makeList) {
 
+            /*error handling for lat and long*/
+            if (Integer.parseInt(typeStartLat.getText()) > 90 || Integer.parseInt(typeStartLat.getText()) < -90 ||
+                    Integer.parseInt(typeStartLong.getText()) > 180 || Integer.parseInt(typeStartLong.getText()) < -180 ||
+                    Integer.parseInt(typeDestinLat.getText()) > 90 || Integer.parseInt(typeDestinLat.getText()) < -90 ||
+                    Integer.parseInt(typeDestinLong.getText()) > 180 || Integer.parseInt(typeDestinLong.getText()) < -180){
+                window3();
+            }
+
             /*using lat and long from prev window*/
-            builder();
+                builder();
 
             /*changes window*/
             window4();
