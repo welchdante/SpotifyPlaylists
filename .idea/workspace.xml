@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42150a49-359a-4d9d-b959-d8c2d56701d1" name="Default Changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="42150a49-359a-4d9d-b959-d8c2d56701d1" name="Default Changelist" comment="Default Changelist">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/com/cis350/spotifyplaylists/PromptHelpersTest.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/EasyHTTPRequest.class" afterPath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/EasyHTTPRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.class" afterPath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/SpotifySongsCollector.class" afterPath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/SpotifySongsCollector.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.class" afterPath="$PROJECT_DIR$/target/classes/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/GUI.java" afterPath="$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/GUI.java" />
     </list>
@@ -80,42 +83,38 @@
     <favorites_list name="spotifyplaylists" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/GUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpotifySongsCollector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/SpotifySongsCollector.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserSpotifyPlaylistBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="37" column="43" lean-forward="true" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/GUI.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="670">
+                  <caret line="236" column="9" lean-forward="true" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="RoadTripPlaylistBuilder.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,10 +143,17 @@
       <find>redirect</find>
       <find>promptHelpers</find>
       <find>http</find>
+      <find>URL</find>
+      <find>URL2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -289,6 +295,27 @@
               <item name="SpotifyPlaylists" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="spotifyplaylists" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpotifyPlaylists" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spotifyplaylists" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpotifyPlaylists" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spotifyplaylists" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpotifyPlaylists" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="spotifyplaylists" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -331,7 +358,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.cis350.spotifyplaylists.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.cis350.spotifyplaylists.GUI" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="spotifyplaylists" />
+      <envs />
+    </configuration>
     <configuration name="PromptHelpersTest.getStartingLatitude" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -426,31 +472,6 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="TomTomCollectorTest.buildRequestUrl" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.cis350.spotifyplaylists.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="spotifyplaylists" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.cis350.spotifyplaylists" />
-      <option name="MAIN_CLASS_NAME" value="com.cis350.spotifyplaylists.TomTomCollectorTest" />
-      <option name="METHOD_NAME" value="buildRequestUrl" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration name="TomTomCollectorTest.getTripDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -477,20 +498,20 @@
       <patterns />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest.buildRequestUrl" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.getStartingLatitude" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.promptUserForCoordinates" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest.getTripDistance" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest" />
-      <item index="5" class="java.lang.String" itemvalue="Application.RoadTripPlaylistBuilder" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.getStartingLatitude" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.promptUserForCoordinates" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest.getTripDistance" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.RoadTripPlaylistBuilder" />
+      <item index="5" class="java.lang.String" itemvalue="Application.GUI" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest.getTripDistance" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.promptUserForCoordinates" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.getStartingLatitude" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest.buildRequestUrl" />
+        <item index="0" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TomTomCollectorTest.getTripDistance" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.promptUserForCoordinates" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PromptHelpersTest.getStartingLatitude" />
       </list>
     </recent_temporary>
   </component>
@@ -512,30 +533,31 @@
       <workItem from="1541972172563" duration="12297000" />
       <workItem from="1542469904254" duration="4503000" />
     </task>
+    <task id="LOCAL-00001" summary="Default Changelist">
+      <created>1543544114370</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1543544114372</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Default Changelist">
+      <created>1543544853682</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1543544853682</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Default Changelist">
+      <created>1543545466963</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1543545466963</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TomTomCollectorTest_testThisNow - 2018.11.17 at 17h 02m 10s.xml">
-      <configuration name="TomTomCollectorTest.testThisNow" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TomTomCollectorTest - 2018.11.17 at 17h 03m 21s.xml">
-      <configuration name="TomTomCollectorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TomTomCollectorTest_getTripDistance - 2018.11.17 at 17h 14m 56s.xml">
-      <configuration name="TomTomCollectorTest.getTripDistance" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TomTomCollectorTest_buildRequestUrl - 2018.11.17 at 17h 21m 41s.xml">
-      <configuration name="TomTomCollectorTest.buildRequestUrl" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TomTomCollectorTest - 2018.11.17 at 17h 21m 52s.xml">
-      <configuration name="TomTomCollectorTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PromptHelpersTest_promptUserForCoordinates - 2018.11.17 at 17h 39m 17s.xml">
-      <configuration name="PromptHelpersTest.promptUserForCoordinates" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PromptHelpersTest_promptUserForCoordinates - 2018.11.17 at 17h 40m 30s.xml">
-      <configuration name="PromptHelpersTest.promptUserForCoordinates" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PromptHelpersTest_getStartingLatitude - 2018.11.17 at 17h 42m 44s.xml">
       <configuration name="PromptHelpersTest.getStartingLatitude" configurationId="JUnit" />
     </history-entry>
@@ -544,6 +566,27 @@
     </history-entry>
     <history-entry file="PromptHelpersTest_getStartingLatitude - 2018.11.17 at 17h 45m 30s.xml">
       <configuration name="PromptHelpersTest.getStartingLatitude" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PromptHelpersTest_promptUserForCoordinates - 2018.11.17 at 17h 39m 17s.xml">
+      <configuration name="PromptHelpersTest.promptUserForCoordinates" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PromptHelpersTest_promptUserForCoordinates - 2018.11.17 at 17h 40m 30s.xml">
+      <configuration name="PromptHelpersTest.promptUserForCoordinates" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TomTomCollectorTest - 2018.11.17 at 17h 03m 21s.xml">
+      <configuration name="TomTomCollectorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TomTomCollectorTest - 2018.11.17 at 17h 21m 52s.xml">
+      <configuration name="TomTomCollectorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TomTomCollectorTest_buildRequestUrl - 2018.11.17 at 17h 21m 41s.xml">
+      <configuration name="TomTomCollectorTest.buildRequestUrl" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TomTomCollectorTest_getTripDistance - 2018.11.17 at 17h 14m 56s.xml">
+      <configuration name="TomTomCollectorTest.getTripDistance" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TomTomCollectorTest_testThisNow - 2018.11.17 at 17h 02m 10s.xml">
+      <configuration name="TomTomCollectorTest.testThisNow" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -556,19 +599,20 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936978" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936978" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7788347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.044864863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24648649" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972972" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -587,6 +631,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Default Changelist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Default Changelist" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -658,7 +706,7 @@
         <state relative-caret-position="275">
           <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -744,16 +792,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/cis350/spotifyplaylists/PromptHelpersTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="36" lean-forward="false" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/EasyHTTPRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
@@ -796,18 +834,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/SpotifySongsCollector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
+        <state relative-caret-position="175">
           <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/UserSpotifyPlaylistBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="37" column="43" lean-forward="true" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+        <state relative-caret-position="275">
+          <caret line="110" column="41" lean-forward="true" selection-start-line="110" selection-start-column="41" selection-end-line="110" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -816,8 +854,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        <state relative-caret-position="670">
+          <caret line="236" column="9" lean-forward="true" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cis350/spotifyplaylists/RoadTripPlaylistBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
           <folding />
         </state>
       </provider>

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Set;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
@@ -39,6 +40,7 @@ public class GUI implements ActionListener {
     private JButton startList = new JButton("Start");
     private JButton enterPoints = new JButton("Next");
     private JButton makeList = new JButton("Make Playlist");
+    private JButton URL2 = new JButton("URL");
 
     /*declare and instantiate labels*/
     private JLabel welcomeMes = new JLabel("Welcome");
@@ -47,7 +49,6 @@ public class GUI implements ActionListener {
             "of your starting point and destination.");
     //CHANGE LATER with better info
     private JLabel directions4 = new JLabel("Go to blah to see your playlist.");
-    private JButton URL2 = new JButton("URL");
     private JLabel startLat = new JLabel("Starting Latitude");
     private JLabel startLong = new JLabel("Starting Longitude");
     private JLabel destLat = new JLabel("Destination Latitude");
@@ -55,6 +56,7 @@ public class GUI implements ActionListener {
     private JLabel travelTime = new JLabel();
 
     /*declare text field*/
+    private JTextField urlcopy = new JTextField();
     private JTextField typeStartLat = new JTextField();
     private JTextField typeStartLong = new JTextField();
     private JTextField typeDestinLat = new JTextField();
@@ -110,6 +112,8 @@ public class GUI implements ActionListener {
         /*finishing*/
         window1();
 
+        //UserSpotifyPlaylistBuilder dante = new UserSpotifyPlaylistBuilder();
+
     }
 
     /************************************
@@ -138,7 +142,8 @@ public class GUI implements ActionListener {
         top.validate();
 
         panel2.add(directions2, BorderLayout.NORTH);
-        panel2.add(URL2, BorderLayout.CENTER);
+        //panel2.add(URL2, BorderLayout.CENTER);
+        panel2.add(urlcopy, BorderLayout.CENTER);
         panel2.add(enterPoints, BorderLayout.SOUTH);
 
         top.add(panel2);
@@ -207,12 +212,6 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startList) {
 
-            /*changes window*/
-            window2();
-
-        }
-        if (e.getSource() == URL2) {
-            /*getting the url for the user*/
             String clientId = "6ed14ff492bf439a840705e0b54e63d1";
             String clientSecret = "00245d2afffd436eab7a311317eaffe3";
             URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
@@ -230,13 +229,39 @@ public class GUI implements ActionListener {
                     .build();
 
             URI uri = authorizationCodeUriRequest.execute();
-            //URL2.setText(uri.toString());
-            try {
-                Desktop.getDesktop().browse(URI.create(uri.toString()));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            urlcopy.setText(uri.toString());
+
+            /*changes window*/
+            window2();
+
         }
+//        if (e.getSource() == URL2) {
+//
+//            /*getting the url for the user*/
+//            String clientId = "6ed14ff492bf439a840705e0b54e63d1";
+//            String clientSecret = "00245d2afffd436eab7a311317eaffe3";
+//            URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
+//
+//            SpotifyApi spotifyApi = new SpotifyApi.Builder()
+//                    .setClientId(clientId)
+//                    .setClientSecret(clientSecret)
+//                    .setRedirectUri(redirectUri)
+//                    .build();
+//
+//            AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
+//                    .state("x4xkmn9pu3j6ukrs8n")
+//                    .scope("user-read-birthdate,user-read-email")
+//                    .show_dialog(true)
+//                    .build();
+//
+//            URI uri = authorizationCodeUriRequest.execute();
+//            //URL2.setText(uri.toString());
+//            try {
+//                Desktop.getDesktop().browse(URI.create(uri.toString()));
+//            } catch (IOException e1) {
+//                e1.printStackTrace();
+//            }
+//        }
         if (e.getSource() == enterPoints) {
 
             /*changes window*/
