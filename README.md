@@ -15,8 +15,9 @@
   * [x] Look into Jamendo API (stretch goal) 
   	* Completed on November 17 by Dante
   	* This isn't going to be able to be implemented because it costs money and it is also a really poorly designed API
-  * [ ] Write unit tests for code that can feasibly be tested
+  * [x] Write unit tests for code that can feasibly be tested
   	* Began by Dant on November 17, need to ask how much we need to test because mocking stuff is hard
+	* Just need to document why a lot of it won't be being tested
   * [x] Figure out expected outputs to give to front end 
   	* Completed by Dante on November 17
 	* Should be good to go now that Javadocs are done. See RoadTripPlaylistBuilder for the general flow of how the GUI should flow. 
