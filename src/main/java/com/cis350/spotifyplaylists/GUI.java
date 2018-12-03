@@ -43,11 +43,10 @@ public class GUI implements ActionListener {
     private JButton URL2 = new JButton("URL");
 
     /*declare and instantiate labels*/
-    private JLabel directions2 = new JLabel("Click the button to log into Spotify.");
+    private JLabel directions2 = new JLabel("Click the button to log into Spotify. Then paste " +
+            "the given code into the box.");
     private JLabel directions3 = new JLabel("Enter the latitude and longitude" +
             "of your starting point and destination.");
-    //CHANGE LATER with better info
-    private JLabel directions4 = new JLabel("Go to blah to see your playlist.");
     private JLabel startLat = new JLabel("Starting Latitude");
     private JLabel startLong = new JLabel("Starting Longitude");
     private JLabel destLat = new JLabel("Destination Latitude");
@@ -55,10 +54,17 @@ public class GUI implements ActionListener {
     private JLabel travelTime = new JLabel();
 
     /*declare text field*/
+    private JTextField code = new JTextField();
     private JTextField typeStartLat = new JTextField();
     private JTextField typeStartLong = new JTextField();
     private JTextField typeDestinLat = new JTextField();
     private JTextField typeDestinLong = new JTextField();
+
+    /*text area for playlist display*/
+    private JTextArea playlistDisplay = new JTextArea();
+
+    /* Create a playlist builder object */
+    private UserSpotifyPlaylistBuilder userSpotifyPlaylistBuilder = new UserSpotifyPlaylistBuilder();
 
     /********************************
      Constructor that makes main page
@@ -78,7 +84,6 @@ public class GUI implements ActionListener {
         //labels
         directions2.setForeground(Color.white);
         directions3.setForeground(Color.white);
-        directions4.setForeground(Color.white);
         travelTime.setForeground(Color.white);
         startLat.setForeground(Color.white);
         startLong.setForeground(Color.white);
@@ -91,10 +96,12 @@ public class GUI implements ActionListener {
         panel3bottom.setBackground(Color.darkGray);
         panel4.setBackground(Color.darkGray);
         //text fields
+        code.setPreferredSize(new Dimension(150, 20));
         typeStartLat.setPreferredSize(new Dimension(150, 20));
         typeStartLong.setPreferredSize(new Dimension(150, 20));
         typeDestinLat.setPreferredSize(new Dimension(150, 20));
         typeDestinLong.setPreferredSize(new Dimension(150, 20));
+        playlistDisplay.setPreferredSize(new Dimension(300, 400));
 
         /*button action listeners*/
         startList.addActionListener(this);
@@ -107,9 +114,6 @@ public class GUI implements ActionListener {
 
         /*finishing*/
         window1();
-
-        //UserSpotifyPlaylistBuilder dante = new UserSpotifyPlaylistBuilder();
-
     }
 
     /************************************
@@ -139,6 +143,7 @@ public class GUI implements ActionListener {
 
         panel2.add(directions2, BorderLayout.NORTH);
         panel2.add(URL2, BorderLayout.CENTER);
+        panel2.add(code, BorderLayout.SOUTH);
         panel2.add(enterPoints, BorderLayout.SOUTH);
 
         top.add(panel2);
@@ -192,9 +197,15 @@ public class GUI implements ActionListener {
         top.getContentPane().repaint();
         top.validate();
 
-        //CHANGE LATER once we have info
-        panel4.add(directions4, BorderLayout.NORTH);
         panel4.add(travelTime, BorderLayout.CENTER);
+        panel4.add(playlistDisplay, BorderLayout.SOUTH);
+
+
+        JScrollPane scroll = new JScrollPane(playlistDisplay);
+        scroll.setBounds(75, 40, 350, 400);
+        top.getContentPane().add(scroll);
+        scroll.setViewportView(playlistDisplay);
+
 
         top.add(panel4);
         top.setSize(700, 500);
@@ -214,8 +225,6 @@ public class GUI implements ActionListener {
         }
         if (e.getSource() == URL2) {
 
-            /* Create a playlist builder object */
-            UserSpotifyPlaylistBuilder userSpotifyPlaylistBuilder = new UserSpotifyPlaylistBuilder();
             /* Create the URI for authenticating the account */
             String uri = userSpotifyPlaylistBuilder.getAuthenticationURI();
             try {
@@ -227,21 +236,22 @@ public class GUI implements ActionListener {
         if (e.getSource() == enterPoints) {
 
             /*changes window*/
+            SpotifyApi spotifyApi = userSpotifyPlaylistBuilder.authenticateAccount(code.getText());
             window3();
 
         }
         if (e.getSource() == makeList) {
 
             /*error handling for lat and long*/
-            if (Integer.parseInt(typeStartLat.getText()) > 90 || Integer.parseInt(typeStartLat.getText()) < -90 ||
-                    Integer.parseInt(typeStartLong.getText()) > 180 || Integer.parseInt(typeStartLong.getText()) < -180 ||
-                    Integer.parseInt(typeDestinLat.getText()) > 90 || Integer.parseInt(typeDestinLat.getText()) < -90 ||
-                    Integer.parseInt(typeDestinLong.getText()) > 180 || Integer.parseInt(typeDestinLong.getText()) < -180){
+            if (Double.parseDouble((typeStartLat.getText())) > 90 || Double.parseDouble(typeStartLat.getText()) < -90 ||
+                    Double.parseDouble(typeStartLong.getText()) > 180 || Double.parseDouble(typeStartLong.getText()) < -180 ||
+                    Double.parseDouble(typeDestinLat.getText()) > 90 || Double.parseDouble(typeDestinLat.getText()) < -90 ||
+                    Double.parseDouble(typeDestinLong.getText()) > 180 || Double.parseDouble(typeDestinLong.getText()) < -180) {
                 window3();
             }
 
             /*using lat and long from prev window*/
-                builder();
+            builder();
 
             /*changes window*/
             window4();
@@ -282,9 +292,8 @@ public class GUI implements ActionListener {
         songCollector.authenticateCredentials(songCollector.spotifyApi);
         Set<AlbumSimplified> songs = songCollector.getAllSongs();
         Set<AlbumSimplified> playlist = songCollector.buildPlaylist(songs, 0, travelTimeInSeconds);
-        System.out.println("Your playlist is:");
         for (AlbumSimplified p : playlist) {
-            System.out.println(p.getName());
+            playlistDisplay.append(p.getName() + "\n");
         }
 
     }
