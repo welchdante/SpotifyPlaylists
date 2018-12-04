@@ -7,14 +7,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/** Allows HTTP Requests to be easily made.
+/**
+ * Allows HTTP Requests to be easily made.
+ *
  * @author Dante Welch
  * @version 1.0
  */
-public class EasyHTTPRequest {
+class EasyHTTPRequest {
 
-    /** Send a get request to a URL
+    /**
+     * Send a get request to a URL
      * Will send a get request to a URL and return the JSON response from it. Assumes the API returns JSON.
+     *
      * @param url A string for where to send the GET request.
      * @return The JSON response from the URL specified.
      */
@@ -36,8 +40,7 @@ public class EasyHTTPRequest {
         }
         in.close();
 
-        JSONObject jsonObj = new JSONObject(response.toString());
-        return jsonObj;
+        return new JSONObject(response.toString());
     }
 }
 

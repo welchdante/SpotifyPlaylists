@@ -7,12 +7,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Set;
 
-/** Driver for the playlist builder.
+/**
+ * Driver for the playlist builder.
+ *
  * @author Dante Welch
  * @version 1.0
  */
-public class RoadTripPlaylistBuilder extends PromptHelpers {
-    
+class RoadTripPlaylistBuilder extends PromptHelpers {
+
     public static void main(String[] args) {
         asciiArt();
 
@@ -90,7 +92,7 @@ public class RoadTripPlaylistBuilder extends PromptHelpers {
         System.out.println("Let's add that playlist to your user account!");
         System.out.println("What is the desired name of the playlist?");
         /* Get playlist name from user */
-        String playlistName = prompUserForPlaylistName();
+        String playlistName = promptUserForPlaylistName();
 
         /* Get user's Spotify account username */
         String displayName = userSpotifyPlaylistBuilder.getUsername();

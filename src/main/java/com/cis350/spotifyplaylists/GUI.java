@@ -272,7 +272,7 @@ public class GUI implements ActionListener {
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject =  easyHTTPRequest.sendGet(url);
+            jsonObject = easyHTTPRequest.sendGet(url);
             System.out.println(jsonObject);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
