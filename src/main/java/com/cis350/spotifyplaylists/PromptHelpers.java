@@ -104,6 +104,7 @@ class PromptHelpers {
     }
 
     /**
+     * Prompts user for starting latitude.
      * @param userInput   Scanner object for user input.
      * @param coordinates Stores coordinates.
      * @return Current coordinates given by user.
@@ -116,6 +117,7 @@ class PromptHelpers {
     }
 
     /**
+     * Prompts user for starting longitude.
      * @param userInput   Scanner object for user input.
      * @param coordinates Stores coordinates.
      * @return Current coordinates given by user.
@@ -128,6 +130,7 @@ class PromptHelpers {
     }
 
     /**
+     * Prompts user for ending latitude.
      * @param userInput   Scanner object for user input.
      * @param coordinates Stores coordinates.
      * @return Current coordinates given by user.
@@ -140,6 +143,7 @@ class PromptHelpers {
     }
 
     /**
+     * Prompts user for ending longitude.
      * @param userInput   Scanner object for user input.
      * @param coordinates Stores coordinates.
      * @return Current coordinates given by user.
