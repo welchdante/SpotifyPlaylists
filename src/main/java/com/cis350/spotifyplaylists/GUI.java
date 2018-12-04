@@ -14,7 +14,7 @@ import java.util.Set;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
 
-import static com.cis350.spotifyplaylists.SpotifySongsCollector.getAllSongs;
+//import static com.cis350.spotifyplaylists.SpotifySongsCollector.getAllSongs;
 
 /*******************************************
  * GUI class that creates a user interface
@@ -285,7 +285,7 @@ public class GUI implements ActionListener {
         //build the playlist
         SpotifySongsCollector songCollector = new SpotifySongsCollector();
         songCollector.authenticateCredentials(songCollector.spotifyApi);
-        Set<AlbumSimplified> songs = getAllSongs();
+        Set<AlbumSimplified> songs = songCollector.getAllSongs();
         Set<AlbumSimplified> playlist = songCollector.buildPlaylist(songs, 0, travelTimeInSeconds);
         System.out.println("Your playlist is:");
         for (AlbumSimplified p : playlist) {

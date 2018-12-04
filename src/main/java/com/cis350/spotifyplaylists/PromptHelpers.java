@@ -2,6 +2,7 @@ package com.cis350.spotifyplaylists;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /** User prompts to be used to gather data from the user.
  * @author Dante Welch
@@ -9,10 +10,71 @@ import java.util.Scanner;
  */
 public class PromptHelpers {
 
+    public static void asciiArt(){
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println("We broke");
+        }
+        System.out.println(" /$$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$$  /$$$$$$$$ /$$$$$$$  /$$$$$$ /$$$$$$$");
+        System.out.println("| $$__  $$ /$$__  $$ /$$__  $$| $$__  $$|__  $$__/| $$__  $$|_  $$_/| $$__  $$");
+        System.out.println("| $$  \\ $$| $$  \\ $$| $$  \\ $$| $$  \\ $$   | $$   | $$  \\ $$  | $$  | $$  \\ $$");
+        System.out.println("| $$$$$$$/| $$  | $$| $$$$$$$$| $$  | $$   | $$   | $$$$$$$/  | $$  | $$$$$$$/");
+        System.out.println("| $$__  $$| $$  | $$| $$__  $$| $$  | $$   | $$   | $$__  $$  | $$  | $$____/");
+        System.out.println("| $$  \\ $$| $$  | $$| $$  | $$| $$  | $$   | $$   | $$  \\ $$  | $$  | $$");
+        System.out.println("| $$  | $$|  $$$$$$/| $$  | $$| $$$$$$$/   | $$   | $$  | $$ /$$$$$$| $$");
+        System.out.println("|__/  |__/ \\______/ |__/  |__/|_______/    |__/   |__/  |__/|______/|__/");
+        System.out.println();
+        System.out.println();
+
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println("We broke");
+        }
+
+        System.out.println(" /$$$$$$$  /$$        /$$$$$$  /$$     /$$ /$$       /$$$$$$  /$$$$$$  /$$$$$$$$");
+        System.out.println("| $$__  $$| $$       /$$__  $$|  $$   /$$/| $$      |_  $$_/ /$$__  $$|__  $$__/");
+        System.out.println("| $$  \\ $$| $$      | $$  \\ $$ \\  $$ /$$/ | $$        | $$  | $$  \\__/   | $$");
+        System.out.println("| $$$$$$$/| $$      | $$$$$$$$  \\  $$$$/  | $$        | $$  |  $$$$$$    | $$");
+        System.out.println("| $$____/ | $$      | $$__  $$   \\  $$/   | $$        | $$   \\____  $$   | $$");
+        System.out.println("| $$      | $$      | $$  | $$    | $$    | $$        | $$   /$$  \\ $$   | $$");
+        System.out.println("| $$      | $$$$$$$$| $$  | $$    | $$    | $$$$$$$$ /$$$$$$|  $$$$$$/   | $$");
+        System.out.println("|__/      |________/|__/  |__/    |__/    |________/|______/ \\______/    |__/");
+
+        System.out.println();
+        System.out.println();
+
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println("We broke");
+        }
+
+        System.out.println("/$$$$$$$  /$$   /$$ /$$$$$$ /$$       /$$$$$$$  /$$$$$$$$ /$$$$$$$");
+        System.out.println("| $$__  $$| $$  | $$|_  $$_/| $$      | $$__  $$| $$_____/| $$__  $$");
+        System.out.println("| $$  \\ $$| $$  | $$  | $$  | $$      | $$  \\ $$| $$      | $$  \\ $$");
+        System.out.println("| $$$$$$$ | $$  | $$  | $$  | $$      | $$  | $$| $$$$$   | $$$$$$$/");
+        System.out.println("| $$__  $$| $$  | $$  | $$  | $$      | $$  | $$| $$__/   | $$__  $$");
+        System.out.println("| $$  \\ $$| $$  | $$  | $$  | $$      | $$  | $$| $$      | $$  \\ $$");
+        System.out.println("| $$$$$$$/|  $$$$$$/ /$$$$$$| $$$$$$$$| $$$$$$$/| $$$$$$$$| $$  | $$");
+        System.out.println("|_______/  \\______/ |______/|________/|_______/ |________/|__/  |__/");
+
+        System.out.println();
+        System.out.println();
+
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            System.out.println("We broke");
+        }
+
+    }
+
     /** Greets the user and gives directions of how to use the program.
      */
     public static void greeting() {
-        System.out.println("Hello! Let's make a playlist for your roadtrip. \n" +
+        System.out.println("Roadtrips can get boring...let's make you a playlist for one! \n" +
                 "First, we need to authenticate with your Spotify account.\n" +
                 "Click the link provided, log in to your account, then the url you are redirected to should\n" +
                 "have a code in it. Copy and paste that code into the program to authenticate your account.");

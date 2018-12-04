@@ -14,6 +14,8 @@ import java.util.Set;
 public class RoadTripPlaylistBuilder extends PromptHelpers {
     
     public static void main(String[] args) {
+        asciiArt();
+
         /* Greet user */
         greeting();
 
@@ -25,8 +27,9 @@ public class RoadTripPlaylistBuilder extends PromptHelpers {
 
         /* Display the URI so the user can click on it */
         System.out.println("URI: " + uri);
-
+        System.out.println();
         /* Get authentication code from user */
+        System.out.println("Code: ");
         String code = userSpotifyPlaylistBuilder.getUserAuthenticationCode();
 
         /* Create Spotify API object */
@@ -44,6 +47,7 @@ public class RoadTripPlaylistBuilder extends PromptHelpers {
                 (String) coordinates.get("endingLatitude"),
                 (String) coordinates.get("endingLongitude"));
 
+        System.out.println("Working some magic and getting information about your road trip...\n");
 
         /* Make request object */
         EasyHTTPRequest easyHTTPRequest = new EasyHTTPRequest();
@@ -54,14 +58,14 @@ public class RoadTripPlaylistBuilder extends PromptHelpers {
         /* Make request and put data into the JSON object and throws exception if it breaks. */
         try {
             jsonObject = easyHTTPRequest.sendGet(url);
-            System.out.println(jsonObject);
+//            System.out.println(jsonObject);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
         /* Get length of trip */
         int travelTimeInSeconds = tomTomCollector.getTripDistance(jsonObject);
-        System.out.println("Your trip will take: " + travelTimeInSeconds + " seconds.");
+        System.out.println("Your trip will take: " + travelTimeInSeconds + " seconds.\n");
 
         /* Create song collector object */
         SpotifySongsCollector songCollector = new SpotifySongsCollector();
@@ -76,13 +80,15 @@ public class RoadTripPlaylistBuilder extends PromptHelpers {
         Set<AlbumSimplified> playlist = songCollector.buildPlaylist(songs, 0, travelTimeInSeconds);
 
         /* Display the playlist to the user */
-        System.out.println("Your playlist is:");
+        System.out.println("Your playlist is:\n");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         for (AlbumSimplified p : playlist) {
             System.out.println(p.getName());
         }
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
 
         System.out.println("Let's add that playlist to your user account!");
-
+        System.out.println("What is the desired name of the playlist?");
         /* Get playlist name from user */
         String playlistName = prompUserForPlaylistName();
 
@@ -94,6 +100,8 @@ public class RoadTripPlaylistBuilder extends PromptHelpers {
 
         /* Add songs to the playlist */
         userSpotifyPlaylistBuilder.addSongsToPlaylist(displayName, playlistId, playlist);
+
+        System.out.println("Your playlist should be on your Spotify account, enjoy!");
     }
 
 }
