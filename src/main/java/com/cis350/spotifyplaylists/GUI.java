@@ -9,12 +9,12 @@ import org.json.JSONObject;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Set;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
-
-import static com.cis350.spotifyplaylists.SpotifySongsCollector.getAllSongs;
 
 /*******************************************
  * GUI class that creates a user interface
@@ -28,7 +28,6 @@ public class GUI implements ActionListener {
 
     /*declare and instantiate JFrame*/
     private JFrame top = new JFrame("Spotify Roadtrip Playlist Generator");
-    ;
 
     /*declare and instantiate JPanel*/
     private JPanel panel1 = new JPanel();
@@ -41,17 +40,13 @@ public class GUI implements ActionListener {
     private JButton startList = new JButton("Start");
     private JButton enterPoints = new JButton("Next");
     private JButton makeList = new JButton("Make Playlist");
+    private JButton URL2 = new JButton("URL");
 
     /*declare and instantiate labels*/
-    //CHANGE LATER welcome
-    private JLabel welcomeMes = new JLabel("Welcome or logo");
-    private JLabel directions2 = new JLabel("Copy and paste the URL below. "
-            + "Log in to your Spotify account");
+    private JLabel directions2 = new JLabel("Click the button to log into Spotify. Then paste " +
+            "the given code into the box.");
     private JLabel directions3 = new JLabel("Enter the latitude and longitude" +
             "of your starting point and destination.");
-    //CHANGE LATER with better info
-    private JLabel directions4 = new JLabel("Go to blah to see your playlist.");
-    private JLabel URL = new JLabel();
     private JLabel startLat = new JLabel("Starting Latitude");
     private JLabel startLong = new JLabel("Starting Longitude");
     private JLabel destLat = new JLabel("Destination Latitude");
@@ -59,14 +54,17 @@ public class GUI implements ActionListener {
     private JLabel travelTime = new JLabel();
 
     /*declare text field*/
+    private JTextField code = new JTextField();
     private JTextField typeStartLat = new JTextField();
     private JTextField typeStartLong = new JTextField();
     private JTextField typeDestinLat = new JTextField();
     private JTextField typeDestinLong = new JTextField();
 
-    /*creates Spotify object*/
-    //CHANGE LATER
-    private RoadTripPlaylistBuilder playlist = new RoadTripPlaylistBuilder();
+    /*text area for playlist display*/
+    private JTextArea playlistDisplay = new JTextArea();
+
+    /* Create a playlist builder object */
+    private UserSpotifyPlaylistBuilder userSpotifyPlaylistBuilder = new UserSpotifyPlaylistBuilder();
 
     /********************************
      Constructor that makes main page
@@ -81,13 +79,12 @@ public class GUI implements ActionListener {
         enterPoints.setPreferredSize(new DimensionUIResource(150, 50));
         makeList.setBackground(Color.white);
         makeList.setPreferredSize(new DimensionUIResource(150, 50));
+        URL2.setBackground(Color.white);
+        URL2.setPreferredSize(new DimensionUIResource(150, 50));
         //labels
-        welcomeMes.setForeground(Color.white);
         directions2.setForeground(Color.white);
         directions3.setForeground(Color.white);
-        directions4.setForeground(Color.white);
         travelTime.setForeground(Color.white);
-        URL.setForeground(Color.white);
         startLat.setForeground(Color.white);
         startLong.setForeground(Color.white);
         destLat.setForeground(Color.white);
@@ -99,43 +96,24 @@ public class GUI implements ActionListener {
         panel3bottom.setBackground(Color.darkGray);
         panel4.setBackground(Color.darkGray);
         //text fields
+        code.setPreferredSize(new Dimension(150, 20));
         typeStartLat.setPreferredSize(new Dimension(150, 20));
         typeStartLong.setPreferredSize(new Dimension(150, 20));
         typeDestinLat.setPreferredSize(new Dimension(150, 20));
         typeDestinLong.setPreferredSize(new Dimension(150, 20));
+        playlistDisplay.setPreferredSize(new Dimension(300, 400));
 
         /*button action listeners*/
         startList.addActionListener(this);
         enterPoints.addActionListener(this);
         makeList.addActionListener(this);
-
-        /*getting the url for the user*/
-        String clientId = "6ed14ff492bf439a840705e0b54e63d1";
-        String clientSecret = "00245d2afffd436eab7a311317eaffe3";
-        URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:5000");
-
-        SpotifyApi spotifyApi = new SpotifyApi.Builder()
-                .setClientId(clientId)
-                .setClientSecret(clientSecret)
-                .setRedirectUri(redirectUri)
-                .build();
-
-        AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
-                .state("x4xkmn9pu3j6ukrs8n")
-                .scope("user-read-birthdate,user-read-email")
-                .show_dialog(true)
-                .build();
-
-        URI uri = authorizationCodeUriRequest.execute();
-        URL.setText(uri.toString());
+        URL2.addActionListener(this);
 
         /*adding items for home panel*/
-        panel1.add(welcomeMes, BorderLayout.NORTH);
         panel1.add(startList, BorderLayout.CENTER);
 
         /*finishing*/
         window1();
-
     }
 
     /************************************
@@ -143,9 +121,9 @@ public class GUI implements ActionListener {
      * window of the GUI. Button goes
      * to next page of getting user info.
      ************************************/
-    public void window1() {
+    private void window1() {
         top.getContentPane().add(panel1);
-        top.setSize(1000, 500);
+        top.setSize(700, 500);
         top.setVisible(true);
         top.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -156,7 +134,7 @@ public class GUI implements ActionListener {
      * page of getting user info. Clears
      * previous window.
      ************************************/
-    public void window2() {
+    private void window2() {
 
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
@@ -164,11 +142,12 @@ public class GUI implements ActionListener {
         top.validate();
 
         panel2.add(directions2, BorderLayout.NORTH);
-        panel2.add(URL, BorderLayout.CENTER);
+        panel2.add(URL2, BorderLayout.CENTER);
+        panel2.add(code, BorderLayout.SOUTH);
         panel2.add(enterPoints, BorderLayout.SOUTH);
 
         top.add(panel2);
-        top.setSize(1600, 500);
+        top.setSize(700, 500);
         top.setVisible(true);
         top.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -181,7 +160,7 @@ public class GUI implements ActionListener {
      * confirmation. Clears previous
      * window.
      ************************************/
-    public void window3() {
+    private void window3() {
 
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
@@ -211,18 +190,25 @@ public class GUI implements ActionListener {
      * confirmation that the playlist
      * has been created in user's account.
      *************************************/
-    public void window4() {
+    private void window4() {
+
         /*clearing jframe and adding new components*/
         top.getContentPane().removeAll();
         top.getContentPane().repaint();
         top.validate();
 
-        //CHANGE LATER once we have info
-        panel4.add(directions4, BorderLayout.NORTH);
         panel4.add(travelTime, BorderLayout.CENTER);
+        panel4.add(playlistDisplay, BorderLayout.SOUTH);
+
+
+        JScrollPane scroll = new JScrollPane(playlistDisplay);
+        scroll.setBounds(75, 40, 350, 400);
+        top.getContentPane().add(scroll);
+        scroll.setViewportView(playlistDisplay);
+
 
         top.add(panel4);
-        top.setSize(1000, 500);
+        top.setSize(700, 500);
         top.setVisible(true);
         top.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -237,13 +223,32 @@ public class GUI implements ActionListener {
             window2();
 
         }
+        if (e.getSource() == URL2) {
+
+            /* Create the URI for authenticating the account */
+            String uri = userSpotifyPlaylistBuilder.getAuthenticationURI();
+            try {
+                Desktop.getDesktop().browse(URI.create(uri));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
         if (e.getSource() == enterPoints) {
 
             /*changes window*/
+            SpotifyApi spotifyApi = userSpotifyPlaylistBuilder.authenticateAccount(code.getText());
             window3();
 
         }
         if (e.getSource() == makeList) {
+
+            /*error handling for lat and long*/
+            if (Double.parseDouble((typeStartLat.getText())) > 90 || Double.parseDouble(typeStartLat.getText()) < -90 ||
+                    Double.parseDouble(typeStartLong.getText()) > 180 || Double.parseDouble(typeStartLong.getText()) < -180 ||
+                    Double.parseDouble(typeDestinLat.getText()) > 90 || Double.parseDouble(typeDestinLat.getText()) < -90 ||
+                    Double.parseDouble(typeDestinLong.getText()) > 180 || Double.parseDouble(typeDestinLong.getText()) < -180) {
+                window3();
+            }
 
             /*using lat and long from prev window*/
             builder();
@@ -260,7 +265,7 @@ public class GUI implements ActionListener {
      * Gives time of trip and finish
      * playlist.
      **********************************/
-    public void builder() {
+    private void builder() {
 
         //build URL for the request
         TomTomCollector tomTomCollector = new TomTomCollector();
@@ -272,7 +277,7 @@ public class GUI implements ActionListener {
         JSONObject jsonObject = new JSONObject();
 
         try {
-            jsonObject =  easyHTTPRequest.sendGet(url);
+            jsonObject = easyHTTPRequest.sendGet(url);
             System.out.println(jsonObject);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -285,11 +290,10 @@ public class GUI implements ActionListener {
         //build the playlist
         SpotifySongsCollector songCollector = new SpotifySongsCollector();
         songCollector.authenticateCredentials(songCollector.spotifyApi);
-        Set<AlbumSimplified> songs = getAllSongs();
+        Set<AlbumSimplified> songs = songCollector.getAllSongs();
         Set<AlbumSimplified> playlist = songCollector.buildPlaylist(songs, 0, travelTimeInSeconds);
-        System.out.println("Your playlist is:");
         for (AlbumSimplified p : playlist) {
-            System.out.println(p.getName());
+            playlistDisplay.append(p.getName() + "\n");
         }
 
     }

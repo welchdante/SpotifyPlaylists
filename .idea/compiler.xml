@@ -9,5 +9,8 @@
         <module name="spotifyplaylists" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spotifyplaylists" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
