@@ -10,7 +10,7 @@ class TomTomCollectorTest {
     TomTomCollector testTomTomCollector = new TomTomCollector();
 
     @Test
-    void getTripDistance() {
+    void getTripDistanceTest() {
 
         JSONObject testSummary = new JSONObject();
         testSummary.put("travelTimeInSeconds", 100);
@@ -30,7 +30,7 @@ class TomTomCollectorTest {
     }
 
     @Test
-    void buildRequestUrl() {
+    void buildRequestUrlTest() {
 
         String startingLatitude = "52";
         String startingLongitude = "12";

@@ -13,23 +13,33 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-/** Collects songs from the public Spotify API and does not use user credentials.
+/**
+ * Collects songs from the public Spotify API and does not use user credentials.
+ *
  * @author Dante Welch
  * @version 1.0
  */
-public class SpotifySongsCollector {
-    /** Spotify API client ID */
+class SpotifySongsCollector {
+    /**
+     * Spotify API client ID
+     */
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
-    /** Spotify API client secret key */
+    /**
+     * Spotify API client secret key
+     */
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
-    /** Spotify API object */
-    public SpotifyApi spotifyApi = new SpotifyApi.Builder()
+    /**
+     * Spotify API object
+     */
+    public final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .build();
 
 
-    /** Authenticates credentials to access the Spotify API
+    /**
+     * Authenticates credentials to access the Spotify API
+     *
      * @param spotifyApi Spotify API object used to interact with the Spotify API
      */
     public static void authenticateCredentials(SpotifyApi spotifyApi) {
@@ -46,7 +56,9 @@ public class SpotifySongsCollector {
 
     }
 
-    /** Gets all songs that could possibly be added to the playlist.
+    /**
+     * Gets all songs that could possibly be added to the playlist.
+     *
      * @return Songs that will be added to the playlist.
      */
     public Set<AlbumSimplified> getAllSongs() {
@@ -71,11 +83,13 @@ public class SpotifySongsCollector {
         return songs;
     }
 
-    /** Builds the set that contains the songs that will be added to the playlist.
-     * @param songs Songs that will be added to the playlist.
+    /**
+     * Builds the set that contains the songs that will be added to the playlist.
+     *
+     * @param songs            Songs that will be added to the playlist.
      * @param playlistDuration Length of the playlist.
      * @param roadTripDuration Length of the roadtrip.
-     * @return
+     * @return The built playlist.
      */
     public static Set<AlbumSimplified> buildPlaylist(Set<AlbumSimplified> songs, double playlistDuration, double roadTripDuration) {
         Set<AlbumSimplified> playlist = new HashSet<>();
