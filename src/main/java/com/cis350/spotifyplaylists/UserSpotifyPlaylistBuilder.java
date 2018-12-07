@@ -14,10 +14,10 @@ import com.wrapper.spotify.requests.data.playlists.CreatePlaylistRequest;
 import com.wrapper.spotify.requests.data.search.simplified.SearchTracksRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Set;
 
 /**

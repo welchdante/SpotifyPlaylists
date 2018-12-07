@@ -2,10 +2,9 @@ package com.cis350.spotifyplaylists;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Set;
+import org.json.JSONObject;
 
 /**
  * Driver for the playlist builder.

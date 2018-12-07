@@ -21,15 +21,15 @@ import java.util.Set;
  */
 class SpotifySongsCollector {
     /**
-     * Spotify API client ID
+     * Spotify API client ID.
      */
     private static final String clientId = "6ed14ff492bf439a840705e0b54e63d1";
     /**
-     * Spotify API client secret key
+     * Spotify API client secret key.
      */
     private static final String clientSecret = "00245d2afffd436eab7a311317eaffe3";
     /**
-     * Spotify API object
+     * Spotify API object.
      */
     public final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
@@ -38,7 +38,7 @@ class SpotifySongsCollector {
 
 
     /**
-     * Authenticates credentials to access the Spotify API
+     * Authenticates credentials to access the Spotify API.
      *
      * @param spotifyApi Spotify API object used to interact with the Spotify API
      */

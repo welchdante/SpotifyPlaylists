@@ -4,7 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Collects data from the TomTom Maps API
+ * Collects data from the TomTom Maps API.
  *
  * @author Dante Welch
  * @version 1.0
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 class TomTomCollector {
 
     /**
-     * The base URL to send to the TomTom API
+     * The base URL to send to the TomTom API.
      */
     String baseUrl = "https://api.tomtom.com/routing/1/calculateRoute/";
 

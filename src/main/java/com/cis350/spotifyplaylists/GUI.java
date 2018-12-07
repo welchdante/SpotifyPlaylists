@@ -4,8 +4,6 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.model_objects.specification.AlbumSimplified;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
-import org.json.JSONObject;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +11,7 @@ import java.net.URI;
 import java.util.Set;
 import javax.swing.*;
 import javax.swing.plaf.DimensionUIResource;
+import org.json.JSONObject;
 
 //import static com.cis350.spotifyplaylists.SpotifySongsCollector.getAllSongs;
 
@@ -28,7 +27,6 @@ public class GUI implements ActionListener {
 
     /*declare and instantiate JFrame*/
     private JFrame top = new JFrame("Spotify Roadtrip Playlist Generator");
-    ;
 
     /*declare and instantiate JPanel*/
     private JPanel panel1 = new JPanel();
@@ -47,8 +45,8 @@ public class GUI implements ActionListener {
     private JLabel welcomeMes = new JLabel("Welcome or logo");
     private JLabel directions2 = new JLabel("Copy and paste the URL below. "
             + "Log in to your Spotify account");
-    private JLabel directions3 = new JLabel("Enter the latitude and longitude" +
-            "of your starting point and destination.");
+    private JLabel directions3 = new JLabel("Enter the latitude and longitude"
+            +"of your starting point and destination.");
     //CHANGE LATER with better info
     private JLabel directions4 = new JLabel("Go to blah to see your playlist.");
     private JLabel URL = new JLabel();
