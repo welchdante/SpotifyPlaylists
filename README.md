@@ -1,7 +1,7 @@
 # SpotifyPlaylists
 
 ## __Todo__:
-* [ ] Backend
+* [x] Backend
   * [x] Configure OAuth 2.0 (hopefully without a browser, use this -> https://www.programcreek.com/java-api-examples/?api=com.wrapper.spotify.Api) 
   	* Completed on November 5 by Dante 
   * [x] See if TomTom Maps will work at all in the United States because it currently doesn't
@@ -21,7 +21,7 @@
   * [x] Figure out expected outputs to give to front end 
   	* Completed by Dante on November 17
 	* Should be good to go now that Javadocs are done. See RoadTripPlaylistBuilder for the general flow of how the GUI should flow. 
-  * [ ] Fix the 6 million bugs that exist
+  * [x] Fix the 6 million bugs that exist
 
 * [ ] Frontend
 	* [ ] Choose a technology that will be used (Swing or JavaFX)
